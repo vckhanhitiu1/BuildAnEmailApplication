@@ -2,7 +2,7 @@ package EmailApp;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class EmailService {
 	
@@ -27,7 +27,6 @@ public class EmailService {
 		String passwordSet = "ABDDJFJDNFJDSMDFKNFDUN";
 		char[] password = new char[length];
 		
-		
 		for(int i =0; i< length ;i++){
 			int rand = (int)(Math.random() * passwordSet.length());
 			password[i] = passwordSet.charAt(rand);
@@ -35,7 +34,26 @@ public class EmailService {
 		return new String(password);
 	}
 	
+	
+	public String refactorRandomPassportMethod(int length){
+		String passwordSet = "ABDDJFJDNFJDSMDFKNFDUN";
+		char[] password = new char[length];
+		int rand = (int)(Math.random() * passwordSet.length());
 
+		List<Character> passwordList = new ArrayList<>();
+		for (char passwordElement : password) {
+			passwordList.add(passwordElement);
+		}
+		
+
+		passwordList.stream().map(passwordElement ->
+			passwordElement = passwordSet.charAt(rand)
+			).collect(Collectors.toList());
+	
+		return null;
+	}
+	
+	
 	
 	
 }
